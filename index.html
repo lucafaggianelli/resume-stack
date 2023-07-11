@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" designer-params>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume</title>
+  </head>
+  <body class="A4">
+    <div class="page-layout sheet" x-data="resume">
+      <main>
+        <header>
+          <img x-show="resume.basics.image" :src="resume.basics.image" />
+          <div>
+            <h1 class="name" x-text="resume.basics.name"></h1>
+            <template x-if="resume.basics.label">
+              <div class="label mt-2 text-xl" x-text="resume.basics.label"></div>
+            </template>
+          </div>
+        </header>
+
+        <template x-for="work in resume.work">
+          <article class="mb-6 last:mb-0">
+            <div class="flex items-self-start">
+              <figure class="h-8 aspect-square mr-4">
+                <template x-if="work.logo">
+                  <img :src="work.logo" class="h-full w-full" />
+                </template>
+
+                <template x-if="!work.logo">
+                  <div></div>
+                </template>
+              </figure>
+
+              <div class="grow">
+                <p class="title">
+                  <span x-text="work.position"></span> @ <a :href="work.url" x-text="work.name" target="_blank"></a>
+                </p>
+
+                <p class="subtitle mb-2" x-text="work.summary"></p>
+              </div>
+
+              <div class="shrink-0 text-right subtitle">
+                <div>
+                  <span x-text="work.startDate"></span> -
+                  <span x-text="work.endDate"></span>
+                </div>
+
+                <div x-text="work.location"></div>
+              </div>
+            </div>
+
+            <ul class="ml-12">
+              <template x-for="line in work.highlights">
+                <li x-text="line"></l>
+              </template>
+            </ul>
+          </article>
+        </template>
+      </main>
+
+      <aside class="p-6">
+        <div class="summary" x-text="resume.basics.summary"></div>
+
+        <template x-if="resume.skills && resume.skills.length">
+          <section>
+            <p class="subheader">Skills</p>
+
+            <template x-for="skill in resume.skills">
+              <div>
+                <div class="flex justify-between">
+                  <div x-text="skill.name"></div>
+                  <div x-text="skill.level"></div>
+                </div>
+
+                <div>
+                  <template x-for="kw in skill.keywords">
+                    <span x-text="kw"></span>
+                  </template>
+                </div>
+              </div>
+            </template>
+          </section>
+        </template>
+
+        <section>
+          <p class="subheader">Languages</p>
+
+          <template x-for="language in resume.languages">
+            <div class="flex justify-between">
+              <div class="title" x-text="language.language"></div>
+              <div x-text="language.fluency"></div>
+            </div>
+          </template>
+        </section>
+
+        <section>
+          <p class="subheader">Certificates</p>
+
+          <template x-for="cert in resume.certificates">
+            <div>
+              <p x-text="cert.name" class="title"></p>
+              <p>
+                <a :href="cert.url" x-text="cert.issuer" target="_blank"></a>
+              </p>
+              <p x-text="cert.date" class="subtitle"></p>
+            </div>
+          </template>
+        </section>
+
+        <section>
+          <p class="subheader">Education</p>
+
+          <template x-for="education in resume.education">
+            <article>
+              <p class="title">
+                <span x-text="education.studyType"></span>
+                &middot;
+                <span x-text="education.area"></span>
+              </p>
+              <p>
+                <a :href="education.url" x-text="education.institution" target="_blank"></a>
+              </p>
+              <p class="subtitle">
+                <span x-text="education.startDate"></span> -
+                <span x-text="education.endDate"></span>
+              </p>
+            </article>
+          </template>
+        </section>
+
+        <section class="mb-4">
+          <p class="subheader">Profiles</p>
+
+          <template x-for="profile in resume.basics.profiles">
+            <p class="flex mb-1">
+              <img :src="profile.logo" class="h-4 aspect-square inline mr-2 opacity-50" />
+              <a :href="profile.url" x-text="profile.url.split('://').pop()" target="_blank"></a>
+            </p>
+          </template>
+        </section>
+
+        <section class="mb-4 last:mb-0">
+          <p class="subheader">Contacts</p>
+
+          <p class="flex mb-1" x-show="resume.basics.email">
+            <img src="/icons/email.svg" class="h-4 aspect-square inline mr-2 opacity-50" />
+            <a :href="`mailto:${resume.basics.email}`" x-text="resume.basics.email" target="_blank"></a>
+          </p>
+
+          <p class="flex mb-1" x-show="resume.basics.url">
+            <img src="/icons/link.svg" class="h-4 aspect-square inline mr-2 opacity-50" />
+            <a :href="resume.basics.url" x-text="resume.basics.url" target="_blank"></a>
+          </p>
+
+          <p class="flex mb-1" x-show="resume.basics.phone">
+            <img src="/icons/phone.svg" class="h-4 aspect-square inline mr-2 opacity-50" />
+            <a :href="`tel:${resume.basics.phone.replaceAll(' ', '')}`" x-text="resume.basics.phone"></a>
+          </p>
+
+          <p class="flex mb-2" x-show="Object.keys(resume.basics.location).length">
+            <img src="/icons/location.svg" class="h-4 aspect-square inline mr-2 opacity-50" />
+            <span x-text="resume.basics.location.city"></span>,<span class="ml-1" x-text="resume.basics.location.country"></span>
+          </p>
+        </section>
+      </aside>
+    </div>
+
+    <div id="builder-container" class="fixed top-10 right-10 no-print"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

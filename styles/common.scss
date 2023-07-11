@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./paper.css";
+
+@page { size: A4 }
+
+:root[designer-params] {
+  --color-background: #ffffff;
+  --color-text-primary: #404040;
+  --font-size: 12px;
+}
+
+body {
+  position: relative;
+  font-size: var(--font-size);
+  color: var(--color-text-primary);
+  background-color: #f8f8f8;
+}
+
+/* Right-side ruler with A4 dimension */
+body::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0px;
+  height: 100%;
+  width: 40px;
+  background: linear-gradient(rgba(0, 0, 0, 0.071) 1px, transparent 1px);
+  background-size: 20px 0;
+}
+
+.page-layout {
+  display: flex;
+  margin: 20px auto;
+  box-shadow: 0px 2px 12px 4px #00000040;
+  background-color: var(--color-background);
+}
+
+
+@media print {
+  .page-layout {
+    margin: 0;
+    box-shadow: none;
+  }
+
+  body::after {
+    display: none;
+  }
+
+  .no-print {
+    display: none;
+  }
+}

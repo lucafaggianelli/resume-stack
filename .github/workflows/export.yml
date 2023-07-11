@@ -1,0 +1,55 @@
+name: Export resume to PDF
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  export-to-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'yarn'
+
+    - run: yarn
+      name: Install dependencies
+
+    - run: yarn build
+      name: Build
+
+    - name: Get current date
+      id: date
+      shell: bash
+      run: |
+        TODAY_ISO=$(date +'%Y-%m-%d')
+        echo "date=$TODAY_ISO" >> $GITHUB_OUTPUT
+
+    - name: Export resume to pdf
+      uses: lucafaggianelli/html-to-pdf-action@master
+      with:
+        baseUrl: dist
+        htmlFile: index.html
+        outputFile: ./dist/resume-${{ steps.date.outputs.date }}.pdf
+        pdfOptions: '{"format": "A4", "printBackground": true}'
+
+    - uses: rickstaa/action-create-tag@v1
+      with:
+        tag: v${{ steps.date.outputs.date }}-${{ github.sha }}
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: Resume ${{ steps.date.outputs.date }}
+        tag_name: v${{ steps.date.outputs.date }}-${{ github.sha }}
+        files: ./dist/resume-*.pdf
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: resume
+        path: ./dist/*
