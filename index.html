@@ -8,20 +8,23 @@
   <body class="A4">
     <div class="page-layout sheet" x-data="resume">
       <main>
-        <header>
+        <header class="main-header">
           <img x-show="resume.basics.image" :src="resume.basics.image" />
           <div>
             <h1 class="name" x-text="resume.basics.name"></h1>
             <template x-if="resume.basics.label">
-              <div class="label mt-2 text-xl" x-text="resume.basics.label"></div>
+              <div
+                class="label mt-2 text-xl"
+                x-text="resume.basics.label"
+              ></div>
             </template>
           </div>
         </header>
 
         <template x-for="work in resume.work">
           <article class="mb-6 last:mb-0">
-            <div class="flex items-self-start">
-              <figure class="h-8 aspect-square mr-4">
+            <header class="flex items-start gap-x-4">
+              <figure class="h-8 aspect-square">
                 <template x-if="work.logo">
                   <img :src="work.logo" class="h-full w-full" />
                 </template>
@@ -33,7 +36,13 @@
 
               <div class="grow">
                 <p class="title">
-                  <span x-text="work.position"></span> @ <a :href="work.url" x-text="work.name" target="_blank"></a>
+                  <span x-text="work.position"></span> @
+                  <template x-if="work.url">
+                    <a :href="work.url" x-text="work.name" target="_blank"></a>
+                  </template>
+                  <template x-if="!work.url">
+                    <span x-text="work.name"></span>
+                  </template>
                 </p>
 
                 <p class="subtitle mb-2" x-text="work.summary"></p>
@@ -47,11 +56,11 @@
 
                 <div x-text="work.location"></div>
               </div>
-            </div>
+            </header>
 
             <ul class="ml-12">
               <template x-for="line in work.highlights">
-                <li x-text="line"></l>
+                <li x-text="line"></li>
               </template>
             </ul>
           </article>
@@ -82,89 +91,156 @@
           </section>
         </template>
 
-        <section>
-          <p class="subheader">Languages</p>
+        <template x-if="resume.languages && resume.languages.length">
+          <section>
+            <p class="subheader">Languages</p>
 
-          <template x-for="language in resume.languages">
-            <div class="flex justify-between">
-              <div class="title" x-text="language.language"></div>
-              <div x-text="language.fluency"></div>
-            </div>
-          </template>
-        </section>
+            <template x-for="language in resume.languages">
+              <div class="flex justify-between gap-x-4">
+                <div class="title" x-text="language.language"></div>
+                <div x-text="language.fluency"></div>
+              </div>
+            </template>
+          </section>
+        </template>
 
-        <section>
-          <p class="subheader">Certificates</p>
+        <template x-if="resume.certificates && resume.certificates.length">
+          <section>
+            <p class="subheader">Certificates</p>
 
-          <template x-for="cert in resume.certificates">
-            <div>
-              <p x-text="cert.name" class="title"></p>
-              <p>
-                <a :href="cert.url" x-text="cert.issuer" target="_blank"></a>
+            <template x-for="cert in resume.certificates">
+              <div>
+                <p x-text="cert.name" class="title"></p>
+                <p>
+                  <template x-if="cert.url">
+                    <a :href="cert.url" x-text="cert.issuer" target="_blank"></a>
+                  </template>
+                  <template x-if="!cert.url">
+                    <span x-text="cert.issuer"></span>
+                  </template>
+                </p>
+                <p x-text="cert.date" class="subtitle"></p>
+              </div>
+            </template>
+          </section>
+        </template>
+
+        <template x-if="resume.education && resume.education.length">
+          <section>
+            <p class="subheader">Education</p>
+
+            <template x-for="education in resume.education">
+              <article>
+                <p class="title">
+                  <span x-text="education.studyType"></span>
+                  &middot;
+                  <span x-text="education.area"></span>
+                </p>
+                <p>
+                  <template x-if="education.url">
+                    <a :href="education.url" x-text="education.institution" target="_blank"></a>
+                  </template>
+                  <template x-if="!education.url">
+                    <span x-text="education.institution"></span>
+                  </template>
+                </p>
+                <p class="subtitle">
+                  <span x-text="education.startDate"></span> -
+                  <span x-text="education.endDate"></span>
+                </p>
+              </article>
+            </template>
+          </section>
+        </template>
+
+        <template
+          x-if="resume.basics.profiles && resume.basics.profiles.length"
+        >
+          <section class="mb-4">
+            <p class="subheader">Profiles</p>
+
+            <template x-for="profile in resume.basics.profiles">
+              <p class="flex mb-1">
+                <img
+                  :src="profile.logo"
+                  class="h-4 aspect-square inline mr-2 opacity-50"
+                />
+                <a
+                  :href="profile.url"
+                  x-text="profile.url.split('://').pop()"
+                  target="_blank"
+                ></a>
               </p>
-              <p x-text="cert.date" class="subtitle"></p>
-            </div>
-          </template>
-        </section>
-
-        <section>
-          <p class="subheader">Education</p>
-
-          <template x-for="education in resume.education">
-            <article>
-              <p class="title">
-                <span x-text="education.studyType"></span>
-                &middot;
-                <span x-text="education.area"></span>
-              </p>
-              <p>
-                <a :href="education.url" x-text="education.institution" target="_blank"></a>
-              </p>
-              <p class="subtitle">
-                <span x-text="education.startDate"></span> -
-                <span x-text="education.endDate"></span>
-              </p>
-            </article>
-          </template>
-        </section>
-
-        <section class="mb-4">
-          <p class="subheader">Profiles</p>
-
-          <template x-for="profile in resume.basics.profiles">
-            <p class="flex mb-1">
-              <img :src="profile.logo" class="h-4 aspect-square inline mr-2 opacity-50" />
-              <a :href="profile.url" x-text="profile.url.split('://').pop()" target="_blank"></a>
-            </p>
-          </template>
-        </section>
+            </template>
+          </section>
+        </template>
 
         <section class="mb-4 last:mb-0">
           <p class="subheader">Contacts</p>
 
-          <p class="flex mb-1" x-show="resume.basics.email">
-            <img src="/icons/email.svg" class="h-4 aspect-square inline mr-2 opacity-50" />
-            <a :href="`mailto:${resume.basics.email}`" x-text="resume.basics.email" target="_blank"></a>
-          </p>
+          <template x-if="resume.basics.email">
+            <p class="flex mb-1">
+              <img
+                src="/icons/email.svg"
+                class="h-4 aspect-square inline mr-2 opacity-50"
+              />
+              <a
+                :href="`mailto:${resume.basics.email}`"
+                x-text="resume.basics.email"
+                target="_blank"
+              ></a>
+            </p>
+          </template>
 
-          <p class="flex mb-1" x-show="resume.basics.url">
-            <img src="/icons/link.svg" class="h-4 aspect-square inline mr-2 opacity-50" />
-            <a :href="resume.basics.url" x-text="resume.basics.url" target="_blank"></a>
-          </p>
+          <template x-if="resume.basics.url">
+            <p class="flex mb-1">
+              <img
+                src="/icons/link.svg"
+                class="h-4 aspect-square inline mr-2 opacity-50"
+              />
+              <a
+                :href="resume.basics.url"
+                x-text="resume.basics.url"
+                target="_blank"
+              ></a>
+            </p>
+          </template>
 
-          <p class="flex mb-1" x-show="resume.basics.phone">
-            <img src="/icons/phone.svg" class="h-4 aspect-square inline mr-2 opacity-50" />
-            <a :href="`tel:${resume.basics.phone.replaceAll(' ', '')}`" x-text="resume.basics.phone"></a>
-          </p>
+          <template x-if="resume.basics.phone">
+            <p class="flex mb-1">
+              <img
+                src="/icons/phone.svg"
+                class="h-4 aspect-square inline mr-2 opacity-50"
+              />
+              <a
+                :href="`tel:${resume.basics.phone.replaceAll(' ', '')}`"
+                x-text="resume.basics.phone"
+              ></a>
+            </p>
+          </template>
 
-          <p class="flex mb-2" x-show="Object.keys(resume.basics.location).length">
-            <img src="/icons/location.svg" class="h-4 aspect-square inline mr-2 opacity-50" />
-            <span x-text="resume.basics.location.city"></span>,<span class="ml-1" x-text="resume.basics.location.country"></span>
-          </p>
+          <template
+            x-if="resume.basics.location && Object.keys(resume.basics.location).length"
+          >
+            <div class="flex mb-2">
+              <img
+                src="/icons/location.svg"
+                class="h-4 aspect-square inline mr-2 opacity-50"
+              />
+              <div>
+                <div x-text="resume.basics.location.address"></div>
+                <div>
+                  <span x-text="resume.basics.location.postalCode"></span>
+                  <span x-text="resume.basics.location.city"></span>
+                </div>
+                <div x-text="resume.basics.location.region"></div>
+                <div x-text="resume.basics.location.countryCode"></div>
+              </div>
+            </div>
+          </template>
         </section>
       </aside>
     </div>
-
     <div id="builder-container" class="fixed top-10 right-10 no-print"></div>
     <script type="module" src="/src/main.js"></script>
   </body>

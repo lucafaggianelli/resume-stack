@@ -11,7 +11,7 @@ body {
   --aside-border-color: #eae0e7;
   --color-primary: #891797;
   --color-text-secondary: #918c8c;
-  --image-margin-left: 40px;
+  --image-margin-left: 48px;
   --image-margin-right: 24px;
   --image-radius: 50%;
   // 48px * 1.1 = line-height of H1
@@ -28,7 +28,7 @@ main {
   padding: 24px;
 }
 
-header {
+header.main-header {
   display: flex;
   align-items: center;
   margin-bottom: 32px;
@@ -76,7 +76,7 @@ li {
 .subheader {
   color: var(--color-primary);
   font-weight: 500;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   margin-top: 16px;
 }
 

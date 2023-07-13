@@ -1,0 +1,166 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json",
+  "basics": {
+    "name": "John Doe",
+    "label": "Software Engineer",
+    "summary": "Highly motivated software engineer with experience in developing web applications and strong problem-solving skills. Passionate about writing clean and efficient code to create user-friendly experiences.",
+    "image": "https://i.pravatar.cc/150?u=myprofile",
+    "location": {
+      "address": "Grand Place 1",
+      "city": "Brussels",
+      "postalCode": "1000",
+      "region": "Brussels Capital Region",
+      "countryCode": "BE"
+    },
+    "url": "https://velvetlab.tech",
+    "phone": "+32 123 456789",
+    "email": "luca@velvetlab.tech"
+  },
+  "education": [
+    {
+      "institution": "University of ABC",
+      "studyType": "BSc",
+      "area": "Computer Science",
+      "startDate": "2015",
+      "endDate": "2019"
+    }
+  ],
+  "languages": [
+    {
+      "language": "Italian",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "French",
+      "fluency": "Working proficiency"
+    },
+    {
+      "language": "English",
+      "fluency": "Working proficiency"
+    },
+    {
+      "language": "Portuguese",
+      "fluency": "Basic"
+    }
+  ],
+  "work": [
+    {
+      "name": "Resume Stack",
+      "logo": "/logo/company-3.svg",
+      "position": "Author",
+      "summary": "Created a resume template using HTML and CSS",
+      "startDate": "2023",
+      "highlights": [
+        "Created a resume template using HTML and CSS",
+        "Published the template on GitHub",
+        "Wrote a tutorial on how to create a resume using the template"
+      ],
+      "location": "Remote",
+      "url": "https://github.com/lucafaggianelli/resume-stack"
+    },
+    {
+      "name": "ABC Corporation",
+      "logo": "/logo/company-2.svg",
+      "position": "Software Engineer",
+      "summary": "Designed and developed scalable web applications",
+      "startDate": "2019",
+      "endDate": "2021",
+      "highlights": [
+        "Designed and developed scalable web applications",
+        "Implemented RESTful APIs for data retrieval and manipulation",
+        "Optimized database queries for improved performance"
+      ],
+      "location": "Brussels, Belgium"
+    },
+    {
+      "name": "XYZ Company",
+      "logo": "/logo/company-1.svg",
+      "position": "Software Engineer Intern",
+      "summary": "Developed and maintained web applications using HTML, CSS, and JavaScript",
+      "startDate": "2018",
+      "endDate": "2019",
+      "highlights": [
+        "Developed and maintained web applications using HTML, CSS, and JavaScript",
+        "Collaborated with team members to implement new features and resolve bugs",
+        "Conducted code reviews and provided feedback on coding best practices"
+      ],
+      "location": "New York, NY"
+    }
+  ],
+  "volunteer": [{
+    "organization": "Organization",
+    "position": "Volunteer",
+    "url": "https://organization.com/",
+    "startDate": "2012-01-01",
+    "endDate": "2013-01-01",
+    "summary": "Description…",
+    "highlights": [
+      "Awarded 'Volunteer of the Month'"
+    ]
+  }],
+  "projects": [{
+    "name": "Project",
+    "startDate": "2019-01-01",
+    "endDate": "2021-01-01",
+    "summary": "Summary...",
+    "highlights": [
+      "Won award at AIHacks 2016"
+    ],
+    "url": "https://project.com/"
+  }],
+  "skills": [
+    {
+      "name": "Java",
+      "level": "Advanced"
+    },
+    {
+      "name": "JavaScript",
+      "level": "Advanced"
+    },
+    {
+      "name": "HTML",
+      "level": "Advanced"
+    },
+    {
+      "name": "CSS",
+      "level": "Advanced"
+    },
+    {
+      "name": "Spring Framework",
+      "level": "Advanced"
+    },
+    {
+      "name": "Database Management",
+      "level": "Advanced"
+    },
+    {
+      "name": "Problem-solving",
+      "level": "Advanced"
+    },
+    {
+      "name": "Teamwork",
+      "level": "Advanced"
+    }
+  ],
+  "certificates": [
+    {
+      "issuer": "PMI",
+      "name": "Project Management Professional",
+      "date": "2018",
+      "url": "https://www.pmi.org/certifications/types/project-management-pmp"
+    }
+  ],
+  "awards": [{
+    "title": "Award",
+    "date": "2014-11-01",
+    "awarder": "Company",
+    "summary": "There is no spoon."
+  }],
+  "publications": [{
+    "name": "Publication",
+    "publisher": "Company",
+    "releaseDate": "2014-10-01",
+    "url": "https://publication.com",
+    "summary": "Description…"
+  }]
+}
