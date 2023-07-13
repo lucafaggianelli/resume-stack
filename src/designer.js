@@ -1,9 +1,16 @@
 import { Pane } from 'tweakpane'
 
+const KEY_EXPANDED = 'rsDesignerExpanded'
+
 const pane = new Pane({
-  title: 'Resume Design',
-  expanded: true,
+  title: 'Resume Designer',
+  expanded: localStorage.getItem(KEY_EXPANDED) === 'true',
   container: document.getElementById('builder-container'),
+})
+
+// Remember if the pane is expanded or not
+document.querySelector('.tp-rotv_b').addEventListener('click', () => {
+  localStorage.setItem(KEY_EXPANDED, pane.expanded)
 })
 
 const findCssVariables = () => {
