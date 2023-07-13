@@ -65,6 +65,139 @@
             </ul>
           </article>
         </template>
+
+        <template x-if="resume.volunteer && resume.volunteer.length">
+          <p class="subheader ml-12 text-base">Volunteering</p>
+        </template>
+
+        <template x-for="volunteer in resume.volunteer">
+          <article class="mb-6 last:mb-0">
+            <header class="flex items-start gap-x-4">
+              <figure class="h-8 aspect-square">
+                <template x-if="volunteer.logo">
+                  <img :src="volunteer.logo" class="h-full w-full" />
+                </template>
+
+                <template x-if="!volunteer.logo">
+                  <div></div>
+                </template>
+              </figure>
+
+              <div class="grow">
+                <p class="title">
+                  <span x-text="volunteer.position"></span> @
+                  <template x-if="volunteer.url">
+                    <a :href="volunteer.url" x-text="volunteer.organization" target="_blank"></a>
+                  </template>
+                  <template x-if="!volunteer.url">
+                    <span x-text="volunteer.organization"></span>
+                  </template>
+                </p>
+
+                <p class="subtitle mb-2" x-text="volunteer.summary"></p>
+              </div>
+
+              <div class="shrink-0 text-right subtitle">
+                <div>
+                  <span x-text="volunteer.startDate"></span> -
+                  <span x-text="volunteer.endDate"></span>
+                </div>
+              </div>
+            </header>
+
+            <ul class="ml-12">
+              <template x-for="line in volunteer.highlights">
+                <li x-text="line"></li>
+              </template>
+            </ul>
+          </article>
+        </template>
+
+        <template x-if="resume.projects && resume.projects.length">
+          <p class="subheader ml-12 text-base">Projects</p>
+        </template>
+
+        <template x-for="project in resume.projects">
+          <article class="mb-6 last:mb-0">
+            <header class="flex items-start gap-x-4">
+              <figure class="h-8 aspect-square">
+                <template x-if="project.logo">
+                  <img :src="project.logo" class="h-full w-full" />
+                </template>
+
+                <template x-if="!project.logo">
+                  <div></div>
+                </template>
+              </figure>
+
+              <div class="grow">
+                <p class="title">
+                  <template x-if="project.url">
+                    <a :href="project.url" x-text="project.name" target="_blank"></a>
+                  </template>
+                  <template x-if="!project.url">
+                    <span x-text="project.name"></span>
+                  </template>
+                </p>
+
+                <p class="subtitle mb-2" x-text="project.summary"></p>
+              </div>
+
+              <div class="shrink-0 text-right subtitle">
+                <div>
+                  <span x-text="project.startDate"></span> -
+                  <span x-text="project.endDate"></span>
+                </div>
+              </div>
+            </header>
+
+            <ul class="ml-12">
+              <template x-for="line in project.highlights">
+                <li x-text="line"></li>
+              </template>
+            </ul>
+          </article>
+        </template>
+
+        <template x-if="resume.publications && resume.publications.length">
+          <p class="subheader ml-12 text-base">Publications</p>
+        </template>
+
+        <template x-for="publication in resume.publications">
+          <article class="mb-6 last:mb-0">
+            <header class="flex items-start gap-x-4">
+              <figure class="h-8 aspect-square">
+                <template x-if="publication.logo">
+                  <img :src="publication.logo" class="h-full w-full" />
+                </template>
+
+                <template x-if="!publication.logo">
+                  <div></div>
+                </template>
+              </figure>
+
+              <div class="grow">
+                <p class="title">
+                  <template x-if="publication.url">
+                    <a :href="publication.url" x-text="publication.name" target="_blank"></a>
+                  </template>
+                  <template x-if="!publication.url">
+                    <span x-text="publication.name"></span>
+                  </template> @
+                  <span x-text="publication.publisher"></span>
+                </p>
+
+                <p class="subtitle mb-2" x-text="publication.summary"></p>
+              </div>
+
+              <div class="shrink-0 text-right subtitle">
+                <div>
+                  <span x-text="publication.releaseDate"></span>
+                </div>
+              </div>
+            </header>
+          </article>
+        </template>
       </main>
 
       <aside class="p-6">
@@ -120,6 +253,27 @@
                   </template>
                 </p>
                 <p x-text="cert.date" class="subtitle"></p>
+              </div>
+            </template>
+          </section>
+        </template>
+
+        <template x-if="resume.awards && resume.awards.length">
+          <section>
+            <p class="subheader">Awards</p>
+
+            <template x-for="award in resume.awards">
+              <div>
+                <p x-text="award.title" class="title"></p>
+                <p>
+                  <template x-if="award.url">
+                    <a :href="award.url" x-text="award.awarder" target="_blank"></a>
+                  </template>
+                  <template x-if="!award.url">
+                    <span x-text="award.awarder"></span>
+                  </template>
+                </p>
+                <p x-text="award.date" class="subtitle"></p>
               </div>
             </template>
           </section>

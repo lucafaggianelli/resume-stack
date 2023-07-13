@@ -87,27 +87,32 @@
       "location": "New York, NY"
     }
   ],
-  "volunteer": [{
-    "organization": "Organization",
-    "position": "Volunteer",
-    "url": "https://organization.com/",
-    "startDate": "2012-01-01",
-    "endDate": "2013-01-01",
-    "summary": "Description…",
-    "highlights": [
-      "Awarded 'Volunteer of the Month'"
-    ]
-  }],
-  "projects": [{
-    "name": "Project",
-    "startDate": "2019-01-01",
-    "endDate": "2021-01-01",
-    "summary": "Summary...",
-    "highlights": [
-      "Won award at AIHacks 2016"
-    ],
-    "url": "https://project.com/"
-  }],
+  "volunteer": [
+    {
+      "organization": "Beach Cleanup",
+      "position": "Volunteer",
+      "url": "https://organization.com",
+      "startDate": "2012-01-01",
+      "endDate": "2013-01-01",
+      "summary": "Cleanup south Italy beaches every weekend",
+      "highlights": [
+        "Awarded 'Volunteer of the Month'",
+        "Removed tons and tons of trash from the beaches"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "An amazing Project",
+      "startDate": "2023-01-01",
+      "endDate": "2023-05-01",
+      "summary": "Summary...",
+      "highlights": [
+        "Won award at AIHacks 2016"
+      ],
+      "url": "https://project.com/"
+    }
+  ],
   "skills": [
     {
       "name": "Java",
@@ -150,17 +155,21 @@
       "url": "https://www.pmi.org/certifications/types/project-management-pmp"
     }
   ],
-  "awards": [{
-    "title": "Award",
-    "date": "2014-11-01",
-    "awarder": "Company",
-    "summary": "There is no spoon."
-  }],
-  "publications": [{
-    "name": "Publication",
-    "publisher": "Company",
-    "releaseDate": "2014-10-01",
-    "url": "https://publication.com",
-    "summary": "Description…"
-  }]
+  "awards": [
+    {
+      "title": "TopDad",
+      "date": "2023-03-12",
+      "awarder": "Family",
+      "summary": "Best dad ever"
+    }
+  ],
+  "publications": [
+    {
+      "name": "New semiconductor materials",
+      "publisher": "IEEE",
+      "releaseDate": "2023-10-01",
+      "url": "https://www.ieee.org/",
+      "summary": "A new way to create semiconductors"
+    }
+  ]
 }
