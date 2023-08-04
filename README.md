@@ -6,7 +6,6 @@ and generate a PDF from it.
 ![A preview of Resume Stack in the browser](https://raw.githubusercontent.com/lucafaggianelli/resume-stack/main/docs/images/browser-window.png)
 
 🖐 Don't forget to 🌟 star this repo if you like it!
-
 💥 More templates are coming!
 
 ## 🤷‍♀️ What's a stack?
@@ -160,7 +159,7 @@ advanced features than plain CSS, you're not obliged to use it
 though!
 
 For more information on how to customize these files, check the
-section [Creating a template](#👩‍🎨-creating-a-template)
+section [Creating a template](#-creating-a-template)
 
 ## 🌟 Automatic PDF Export
 
@@ -201,3 +200,17 @@ manually enabled:
   for creating the releases
 
 ## 👩‍🎨 Creating a template
+
+> A more detailed guide on how to create templates is coming
+
+The `index.html` file support is an [AlpineJS](https://alpinejs.dev/) template,
+check their website for the syntax.
+
+The resume content is available as the `resume` variable in the AlpineJS template.
+
+You can use [TailwindCSS](https://tailwindcss.com/) classes and custom CSS/SCSS
+styles, just modify the `styles/main.scss` or create a new file and import it
+in `main.scss`.
+
+The Resume Designer is setup automatically, it picks the CSS variables defined
+in `main.scss`, you can add other variables to the rule `:root[designer-params] {}`.
