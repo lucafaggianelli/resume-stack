@@ -25,7 +25,6 @@
 	"customizations": {
 		"codespaces": {
 			"openFiles": [
-				"README.md",
 				"resume.json"
 			]
 		}
