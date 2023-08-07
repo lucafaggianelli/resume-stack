@@ -1,27 +1,12 @@
-## Resume Stack
+# Resume Stack
 
-The easiest way to design and maintain your resume with web technologies
-and generate a PDF from it.
+The easiest way to design your resume with Tailwind
+and automatically export it to PDF via Github Actions.
 
-![A preview of Resume Stack in the browser](https://raw.githubusercontent.com/lucafaggianelli/resume-stack/main/docs/images/browser-window.png)
+![An overview of Resume Stack](https://raw.githubusercontent.com/lucafaggianelli/resume-stack/main/docs/images/hero.png)
 
 🖐 Don't forget to 🌟 star this repo if you like it!
 💥 More templates are coming!
-
-## 🤷‍♀️ What's a stack?
-
-In the software jargon a *stack* is a set of components used to execute an
-application or more generally a system.
-
-And that's what Resume Stack is, an ensemble of HTML, CSS,
-[TailwindCSS](https://tailwindcss.com/) and *invisible* 👻 JavaScript
-to give you a resume!
-
-> Invisible 🙄 … well behind the scene there's some JavaScript into the stack:
-[AlpineJS](https://alpinejs.dev/) to *connect* the content of your resume
-to the HTML page and [Vite](https://vitejs.dev/)
-to reflect changes in the code to the browser in realtime.
-Though you won't see and you won't write any JavaScript!
 
 ## 🚀 Get Started
 
@@ -198,6 +183,21 @@ manually enabled:
 
 > 👉 *Read and write permissions* are required by the workflow
   for creating the releases
+
+## 🤷‍♀️ What's a stack?
+
+In the software jargon a *stack* is a set of components used to execute an
+application or more generally a system.
+
+And that's what Resume Stack is, an ensemble of HTML, CSS,
+[TailwindCSS](https://tailwindcss.com/) and *invisible* 👻 JavaScript
+to give you a resume!
+
+> Invisible 🙄 … well behind the scene there's some JavaScript into the stack:
+[AlpineJS](https://alpinejs.dev/) to *connect* the content of your resume
+to the HTML page and [Vite](https://vitejs.dev/)
+to reflect changes in the code to the browser in realtime.
+Though you won't see and you won't write any JavaScript!
 
 ## 👩‍🎨 Creating a template
 
